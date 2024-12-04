@@ -3,15 +3,20 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryWebApplication.Server", "LibraryWebApplication.Server\LibraryWebApplication.Server.csproj", "{0EB30986-BEBF-4527-A229-DDF1278ADC1C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibraryWebApplication.Server", "LibraryWebApplication.Server\LibraryWebApplication.Server.csproj", "{0EB30986-BEBF-4527-A229-DDF1278ADC1C}"
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "librarywebapplication.client", "librarywebapplication.client\librarywebapplication.client.esproj", "{86B59EBC-C9A9-4B00-905C-D8B4A32EA27E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryWebApplication.Core", "LibraryWebApplication.Core\LibraryWebApplication.Core.csproj", "{A69BD012-6B20-46C0-AB0B-505E9ED25ACB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibraryWebApplication.Core", "LibraryWebApplication.Core\LibraryWebApplication.Core.csproj", "{A69BD012-6B20-46C0-AB0B-505E9ED25ACB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryWebApplication.Application", "LibraryWebApplication.Application\LibraryWebApplication.Application.csproj", "{195DB520-20DA-4F79-8DCC-C9CF937D2D0D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibraryWebApplication.Application", "LibraryWebApplication.Application\LibraryWebApplication.Application.csproj", "{195DB520-20DA-4F79-8DCC-C9CF937D2D0D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryWebApplication.Infrastructure", "LibraryWebApplication.Infrastructure\LibraryWebApplication.Infrastructure.csproj", "{496836A7-E093-4888-AB88-03E855411839}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibraryWebApplication.Infrastructure", "LibraryWebApplication.Infrastructure\LibraryWebApplication.Infrastructure.csproj", "{496836A7-E093-4888-AB88-03E855411839}"
+	ProjectSection(ProjectDependencies) = postProject
+		{195DB520-20DA-4F79-8DCC-C9CF937D2D0D} = {195DB520-20DA-4F79-8DCC-C9CF937D2D0D}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "Test\Test.csproj", "{310D35A8-985C-48C3-A496-6FE540621C99}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +46,10 @@ Global
 		{496836A7-E093-4888-AB88-03E855411839}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{496836A7-E093-4888-AB88-03E855411839}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{496836A7-E093-4888-AB88-03E855411839}.Release|Any CPU.Build.0 = Release|Any CPU
+		{310D35A8-985C-48C3-A496-6FE540621C99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{310D35A8-985C-48C3-A496-6FE540621C99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{310D35A8-985C-48C3-A496-6FE540621C99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{310D35A8-985C-48C3-A496-6FE540621C99}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
