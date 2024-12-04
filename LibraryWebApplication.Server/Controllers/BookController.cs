@@ -17,7 +17,7 @@ namespace LibraryWebApplication.Server.Controllers
 
 
         // Получение определённой книги по её Id
-        [HttpGet]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetBookById()
         {
             throw new NotImplementedException();
@@ -25,7 +25,7 @@ namespace LibraryWebApplication.Server.Controllers
 
 
         // Получение книги по её ISBN
-        [HttpGet]
+        [HttpGet("isbn/{isbn}")]
         public async Task<IActionResult> GetBookByISBN()
         {
             throw new NotImplementedException();
@@ -42,7 +42,7 @@ namespace LibraryWebApplication.Server.Controllers
 
 
         // Изменение информации о существующей книге
-        [HttpPut]
+        [HttpPut("{id}")]
         public async Task<IActionResult> ChangeInformationBook()
         {
             throw new NotImplementedException();
@@ -50,7 +50,7 @@ namespace LibraryWebApplication.Server.Controllers
 
 
         //Удаление книги
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteBook()
         {
             throw new NotImplementedException();
@@ -58,7 +58,7 @@ namespace LibraryWebApplication.Server.Controllers
 
 
         //Выдача книг на руки пользователю
-        [HttpPost]
+        [HttpPost("lend")]
         public async Task<IActionResult> GiveBook()
         {
             throw new NotImplementedException();
@@ -66,14 +66,14 @@ namespace LibraryWebApplication.Server.Controllers
 
 
         //Добавление изображения к книге и его хранение
-        [HttpPost]
+        [HttpPost("{id}/image")]
         public async Task<IActionResult> AddImageBook()
         {
             throw new NotImplementedException();
         }
 
 
-        [HttpGet]
+        [HttpGet("{id}/notify")]
         public async Task<IActionResult> SendNotification()
         {
             throw new NotImplementedException();

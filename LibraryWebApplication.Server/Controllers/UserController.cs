@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
@@ -9,22 +10,47 @@ namespace LibraryWebApplication.Server.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        [HttpPost("")]
-        public async Task<IActionResult> Register()
-        {
-            
 
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetUserByIdAsync(int id)
+        {
             throw new NotImplementedException();
         }
 
-        [HttpPost("login")]
-        public async Task<IActionResult> Login()
+
+        [HttpGet("getByEmail/{email}")]
+        public async Task<IActionResult> GetUserByEmailAsync(string email)
         {
             throw new NotImplementedException();
-
         }
 
-        
+
+        [Authorize]
+        [HttpGet("getAll")]
+        public async Task<IActionResult> GetAllUsersAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> TryAddUserAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateUser()
+        {
+            throw new NotImplementedException();
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> DeleteUser(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+
     }
 
 }

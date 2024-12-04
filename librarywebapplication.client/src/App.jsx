@@ -2,13 +2,13 @@ import { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
-    const [forecasts, setForecasts] = useState();
+    const [forecasts, setForecasts] = useState([]);
 
     useEffect(() => {
         populateWeatherData();
     }, []);
 
-    const contents = forecasts === undefined
+    const contents = forecasts.length === 0
         ? <p><em>Loading... Please refresh once the ASP.NET backend has started. See <a href="https://aka.ms/jspsintegrationreact">https://aka.ms/jspsintegrationreact</a> for more details.</em></p>
         : <table className="table table-striped" aria-labelledby="tableLabel">
             <thead>
@@ -20,9 +20,9 @@ function App() {
                 </tr>
             </thead>
             <tbody>
-                {forecasts.map(forecast =>
-                    <tr key={forecast.date}>
-                        <td>{forecast.date}</td>
+                {forecasts.map((forecast, index) =>
+                    <tr key={index}>
+                        <td>{new Date(forecast.date).toLocaleDateString()}</td>
                         <td>{forecast.temperatureC}</td>
                         <td>{forecast.temperatureF}</td>
                         <td>{forecast.summary}</td>
@@ -38,11 +38,19 @@ function App() {
             {contents}
         </div>
     );
-    
+
     async function populateWeatherData() {
-        const response = await fetch('weatherforecast');
-        const data = await response.json();
-        setForecasts(data);
+        try {
+            const response = await fetch('/weatherforecast');
+            if (!response.ok) {
+                console.error('Ошибка загрузки данных:', response.statusText);
+                return;
+            }
+            const data = await response.json();
+            setForecasts(data);
+        } catch (error) {
+            console.error('Ошибка запроса:', error);
+        }
     }
 }
 
