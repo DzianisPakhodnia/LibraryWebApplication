@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace LibraryWebApplication.Application.Services
 {
-    public class UserService
+    public class BookService
     {
-
 
     }
 }

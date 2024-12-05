@@ -6,12 +6,16 @@ using System.Threading.Tasks;
 
 namespace LibraryWebApplication.Core.Entities
 {
-    internal class Author
+    public class Author
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public DateTime DateOfBirth { get; set; }
         public string Country { get; set; }
+
+        public ICollection<Book> Books { get; set; } = new List<Book>();
+
+
     }
 }

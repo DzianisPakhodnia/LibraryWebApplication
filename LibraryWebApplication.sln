@@ -10,6 +10,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibraryWebApplication.Core", "LibraryWebApplication.Core\LibraryWebApplication.Core.csproj", "{A69BD012-6B20-46C0-AB0B-505E9ED25ACB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibraryWebApplication.Application", "LibraryWebApplication.Application\LibraryWebApplication.Application.csproj", "{195DB520-20DA-4F79-8DCC-C9CF937D2D0D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A69BD012-6B20-46C0-AB0B-505E9ED25ACB} = {A69BD012-6B20-46C0-AB0B-505E9ED25ACB}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibraryWebApplication.Infrastructure", "LibraryWebApplication.Infrastructure\LibraryWebApplication.Infrastructure.csproj", "{496836A7-E093-4888-AB88-03E855411839}"
 	ProjectSection(ProjectDependencies) = postProject

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LibraryWebApplication.Core.Entities
 {
-    internal class Book
+    public class Book
     {
         public Guid Id { get; set; }
         public string ISBN { get; set; }
@@ -14,9 +14,14 @@ namespace LibraryWebApplication.Core.Entities
         public string Genre { get; set; }
         public string Description { get; set; }
 
-        public Author Author { get; set; }
+        
 
         public DateTime? BorrowedTime { get; set; }
         public DateTime? ReturnTime { get; set; }
+
+        public Guid AuthorId { get; set; }
+        public Author Author { get; set; }
+
+
     }
 }
