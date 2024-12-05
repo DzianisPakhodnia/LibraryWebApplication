@@ -7,11 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Data\" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LibraryWebApplication.Core\LibraryWebApplication.Core.csproj" />
+    <ProjectReference Include="..\LibraryWebApplication.Application\LibraryWebApplication.Application.csproj" />
   </ItemGroup>
 
 </Project>
