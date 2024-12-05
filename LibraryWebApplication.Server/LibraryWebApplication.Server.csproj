@@ -11,6 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="IntelWash.IS.Admin.EntityFramework.PostgreSQL" Version="3.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.SpaProxy">
       <Version>8.*-*</Version>
     </PackageReference>
@@ -21,6 +22,7 @@
     <ProjectReference Include="..\librarywebapplication.client\librarywebapplication.client.esproj">
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
+    <ProjectReference Include="..\LibraryWebApplication.Infrastructure\LibraryWebApplication.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
