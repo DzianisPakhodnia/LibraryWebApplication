@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LibraryWebApplication.Core.Interfaces
+namespace LibraryWebApplication.Core.Interfaces.Repositories
 {
-    public interface IRepository<T> 
+    public interface IRepository<T>
     {
         public Task CreateAsync(T entity);
         public Task DeleteAsync(int id);
