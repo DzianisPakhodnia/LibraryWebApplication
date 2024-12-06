@@ -1,5 +1,6 @@
 ﻿using LibraryWebApplication.Core.Entities;
-using LibraryWebApplication.Core.Interfaces;
+using LibraryWebApplication.Core.Interfaces.Repositories;
+using LibraryWebApplication.Infrastructure.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +11,11 @@ namespace LibraryWebApplication.Infrastructure.Repositories
 {
     public class AuthorRepository : Repository<Author>, IAuthorRepository
     {
-        public Task<IEnumerable<Author>> GetAuthorsByBookTitleAsync(string bookTitle)
-        {
-            throw new NotImplementedException();
-        }
+
+        private readonly ApplicationDbContext _context;
+        //public async Task<IEnumerable<Author>> GetAuthorsByBookTitleAsync(string bookTitle)
+        //{
+            
+        //}
     }
 }

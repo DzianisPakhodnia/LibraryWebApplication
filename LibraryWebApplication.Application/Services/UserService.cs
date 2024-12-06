@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LibraryWebApplication.Core.Interfaces.Services;
 
 namespace LibraryWebApplication.Application.Services
 {
-    public class UserService
+    public class UserService : IUserService
     {
 
 
