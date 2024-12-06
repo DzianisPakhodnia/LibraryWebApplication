@@ -26,4 +26,8 @@
     <ProjectReference Include="..\LibraryWebApplication.Application\LibraryWebApplication.Application.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="BaseRepository\" />
+  </ItemGroup>
+
 </Project>

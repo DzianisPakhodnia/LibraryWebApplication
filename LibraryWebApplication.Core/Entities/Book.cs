@@ -14,8 +14,6 @@ namespace LibraryWebApplication.Core.Entities
         public string Genre { get; set; }
         public string Description { get; set; }
 
-        
-
         public DateTime? BorrowedTime { get; set; }
         public DateTime? ReturnTime { get; set; }
 

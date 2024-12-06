@@ -38,7 +38,6 @@ namespace LibraryWebApplication.Infrastructure.Configurations
                 .HasMaxLength(500) 
                 .IsRequired(false);
 
-
         }
     }
 }
