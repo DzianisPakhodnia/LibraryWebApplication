@@ -1,4 +1,6 @@
 ﻿using LibraryWebApplication.Core.Interfaces.Repositories;
+using LibraryWebApplication.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +12,10 @@ namespace LibraryWebApplication.Infrastructure.Repositories
 {
     public class Repository<T> : IRepository<T> where T : class
     {
+        private readonly DbContext _context;
+        private readonly DbSet<T> _dbSet;
+
+
         public Task CreateAsync(T entity)
         {
             throw new NotImplementedException();
