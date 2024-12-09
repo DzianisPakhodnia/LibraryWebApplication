@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using LibraryWebApplication.Application.Services;
+using LibraryWebApplication.Core.Interfaces.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryWebApplication.Server.Controllers
@@ -7,6 +9,13 @@ namespace LibraryWebApplication.Server.Controllers
     [ApiController]
     public class BookController : ControllerBase
     {
+        private readonly IBookService _bookService;
+        public BookController(BookService bookService) 
+        { 
+            _bookService = bookService;
+        }
+
+
 
         // Получение списка всех книг
         [HttpGet]
@@ -16,11 +25,10 @@ namespace LibraryWebApplication.Server.Controllers
         }
 
 
-        // Получение определённой книги по её Id
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetBookById()
+        public async Task<IActionResult> GetBookById(Guid id)
         {
-            throw new NotImplementedException();
+            //var book = await _bookService.GetBookById(id);
         }
 
 

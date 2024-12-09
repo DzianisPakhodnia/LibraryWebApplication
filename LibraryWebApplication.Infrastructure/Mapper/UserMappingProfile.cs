@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using LibraryWebApplication.Application.DTO;
+using LibraryWebApplication.Application.DTO.User;
 using LibraryWebApplication.Core.Entities;
 using System;
 using System.Collections.Generic;

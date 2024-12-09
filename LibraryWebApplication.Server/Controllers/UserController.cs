@@ -1,4 +1,5 @@
 ﻿
+using LibraryWebApplication.Application.DTO.User;
 using LibraryWebApplication.Core.Interfaces.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -18,18 +19,19 @@ namespace LibraryWebApplication.Server.Controllers
             _userService = userService;
         }
 
-
         [HttpGet("{id}")]
         public async Task<IActionResult> GetUserByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var user = await _userService.GetUserByIdAsync(id);
+            return Ok(user);
         }
 
 
         [HttpGet("getByEmail/{email}")]
         public async Task<IActionResult> GetUserByEmailAsync(string email)
         {
-            throw new NotImplementedException();
+            var user = await _userService.GetUserByEmailAsync(email);
+            return Ok(user);
         }
 
 
@@ -42,15 +44,18 @@ namespace LibraryWebApplication.Server.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> TryAddUserAsync()
+        public async Task<IActionResult> TryAddUserAsync(UserCreateDTO userCreateDTO)
         {
-            throw new NotImplementedException();
+
+            await _userService.TryAddUserAsync(userCreateDTO);
+            return Ok();
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdateUser()
+        public async Task<IActionResult> UpdateUser([FromForm] UserUpdateDTO userUpdate, IFormFile photo = null)
         {
-            throw new NotImplementedException();
+            await _userService.UpdateUserAsync(userUpdate, photo);
+            return Ok();
         }
 
         [HttpDelete]

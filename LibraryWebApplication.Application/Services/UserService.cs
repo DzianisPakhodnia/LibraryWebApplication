@@ -1,4 +1,4 @@
-﻿using LibraryWebApplication.Application.DTO;
+﻿using LibraryWebApplication.Application.DTO.User;
 using LibraryWebApplication.Application.Interfaces;
 using LibraryWebApplication.Core.Entities;
 using LibraryWebApplication.Core.Interfaces.Services;
@@ -34,19 +34,27 @@ namespace LibraryWebApplication.Application.Services
             return await _mapper.Map<IEnumerable<User>, IEnumerable<UserDTO>>(users);
         }
 
-        public Task<UserDTO> GetUserByEmailAsync(string email)
+        public async Task<UserDTO> GetUserByEmailAsync(string email)
         {
-            throw new NotImplementedException();
+            var user = await _unitOfWork.Users.GetUserByEmailAsync(email);
+            return await _mapper.Map<User, UserDTO>(user);
         }
 
-        public Task<UserDTO> GetUserByIdAsync(int id)
+        public async Task<UserDTO> GetUserByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var user = await _unitOfWork.Users.GetByIdAsync(id);
+            if (user == null)
+            {
+                throw new KeyNotFoundException();
+            }
+            return await _mapper.Map<User, UserDTO>(user);
+
         }
 
-        public Task TryAddUserAsync(UserCreateDTO userCreateDTO)
+        public async Task TryAddUserAsync(UserCreateDTO userCreateDTO)
         {
-            throw new NotImplementedException();
+            var user = await _mapper.Map<UserCreateDTO, User>(userCreateDTO);
+            await _unitOfWork.Users.CreateAsync(user);
         }
 
         public Task UpdateUserAsync(UserUpdateDTO userUpdateDTO, IFormFile photo)

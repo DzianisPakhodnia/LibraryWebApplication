@@ -1,4 +1,4 @@
-﻿using LibraryWebApplication.Application.DTO;
+﻿using LibraryWebApplication.Application.DTO.User;
 using Microsoft.AspNetCore.Http;
 
 namespace LibraryWebApplication.Core.Interfaces.Services

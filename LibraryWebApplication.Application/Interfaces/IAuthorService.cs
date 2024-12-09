@@ -8,5 +8,7 @@ namespace LibraryWebApplication.Application.Interfaces
 {
     public interface IAuthorService
     {
+
+
     }
 }
