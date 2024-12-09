@@ -1,5 +1,5 @@
 ﻿using LibraryWebApplication.Core.Entities;
-using LibraryWebApplication.Core.Interfaces.Repositories;
+using LibraryWebApplication.Core.Repositories;
 using LibraryWebApplication.Infrastructure.Data;
 using System;
 using System.Collections.Generic;

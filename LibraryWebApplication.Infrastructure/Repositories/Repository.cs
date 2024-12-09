@@ -1,4 +1,4 @@
-﻿using LibraryWebApplication.Core.Interfaces.Repositories;
+﻿using LibraryWebApplication.Core.Repositories;
 using LibraryWebApplication.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using System;

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LibraryWebApplication.Core.Interfaces.Repositories
+namespace LibraryWebApplication.Core.Repositories
 {
     public interface IAuthorRepository : IRepository<Author>
     {

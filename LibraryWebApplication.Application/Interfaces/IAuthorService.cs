@@ -4,13 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LibraryWebApplication.Core.Interfaces.Services
+namespace LibraryWebApplication.Application.Interfaces
 {
-    public interface IUserService
+    public interface IAuthorService
     {
-
-
-
-
     }
 }

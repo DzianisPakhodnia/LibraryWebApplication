@@ -1,4 +1,5 @@
 ﻿
+using LibraryWebApplication.Core.Interfaces.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -10,6 +11,13 @@ namespace LibraryWebApplication.Server.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
+        private readonly IUserService _userService;
+
+        public UserController(IUserService userService)
+        {
+            _userService = userService;
+        }
+
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetUserByIdAsync(int id)
@@ -25,11 +33,12 @@ namespace LibraryWebApplication.Server.Controllers
         }
 
 
-        [Authorize]
+        //[Authorize]
         [HttpGet("getAll")]
         public async Task<IActionResult> GetAllUsersAsync()
         {
-            throw new NotImplementedException();
+            var users = await _userService.GetAllUsersAsync();
+            return Ok(users);
         }
 
         [HttpPost]
@@ -47,7 +56,8 @@ namespace LibraryWebApplication.Server.Controllers
         [HttpDelete]
         public async Task<IActionResult> DeleteUser(int id)
         {
-            throw new NotImplementedException();
+            await _userService.DeleteUserAsync(id);
+            return NoContent();
         }
 
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using LibraryWebApplication.Application.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryWebApplication.Server.Controllers
 {
@@ -6,6 +7,13 @@ namespace LibraryWebApplication.Server.Controllers
     [ApiController]
     public class AuthorController : ControllerBase
     {
+        private readonly IAuthorService _authorService;
+        public AuthorController(IAuthorService authorService)
+        {
+            _authorService = authorService;
+
+        }
+
 
         // Получение списка всех авторов
         [HttpGet("getAll")]
