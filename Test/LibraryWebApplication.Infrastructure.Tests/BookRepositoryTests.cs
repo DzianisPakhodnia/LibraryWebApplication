@@ -6,14 +6,14 @@ namespace LibraryWebApplication.Infrastructure.Tests
 {
     public class BookRepositoryTests
     {
-        private DbContext GetInMemoryDbContext()
-        {
-            var options = new DbContextOptionsBuilder<DbContext>()
-                .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString()) // ”никальна€ база дл€ каждого теста
-                .Options;
+        //private DbContext GetInMemoryDbContext()
+        //{
+        //    //var options = new DbContextOptionsBuilder<DbContext>()
+        //    //    .UseInMemoryDatabase(databaseName: Int128.NewGuid().ToString()) // ”никальна€ база дл€ каждого теста
+        //    //    .Options;
 
-            return new DbContext(options);
-        }
+        //    //return new DbContext(options);
+        //}
 
 
 

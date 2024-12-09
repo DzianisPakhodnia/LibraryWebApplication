@@ -26,9 +26,10 @@ namespace LibraryWebApplication.Server.Controllers
 
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetBookById(Guid id)
+        public async Task<IActionResult> GetBookById(int id)
         {
             //var book = await _bookService.GetBookById(id);
+            throw new NotImplementedException();
         }
 
 

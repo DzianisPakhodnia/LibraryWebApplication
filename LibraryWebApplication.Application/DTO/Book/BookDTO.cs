@@ -8,7 +8,7 @@ namespace LibraryWebApplication.Application.DTO.Book
 {
     public class BookDTO
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         public string ISBN { get; set; }
         public string Title { get; set; }
         public string Genre { get; set; }
