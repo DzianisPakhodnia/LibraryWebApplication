@@ -21,14 +21,21 @@ namespace LibraryWebApplication.Infrastructure.Repositories
             _dbSet = _context.Set<T>();
         }
 
-        public Task CreateAsync(T entity)
+        public async Task CreateAsync(T entity)
         {
-            throw new NotImplementedException();
+            await _dbSet.AddAsync(entity);
+            await _context.SaveChangesAsync();
         }
 
-        public Task DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var entity = await _dbSet.FindAsync(id);
+            if (entity != null) 
+            {
+                _dbSet.Remove(entity);
+                await _context.SaveChangesAsync();
+            }
+         
         }
 
         public async Task<IEnumerable<T>> GetAllAsync()
@@ -36,14 +43,16 @@ namespace LibraryWebApplication.Infrastructure.Repositories
             return await _dbSet.ToListAsync();
         }
 
-        public Task<T> GetByIdAsync(int id)
+        public async Task<T> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _dbSet.FindAsync(id);
         }
 
-        public Task UpdateAsync(T entity)
+        public async Task UpdateAsync(T entity)
         {
-            throw new NotImplementedException();
+            _dbSet.Attach(entity);
+            _context.Entry(entity).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
         }
     }
 }
