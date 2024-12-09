@@ -15,6 +15,11 @@ namespace LibraryWebApplication.Infrastructure.Repositories
         private readonly DbContext _context;
         private readonly DbSet<T> _dbSet;
 
+        public Repository(DbContext context)
+        {
+            _context = context;
+            _dbSet = _context.Set<T>();
+        }
 
         public Task CreateAsync(T entity)
         {
@@ -26,9 +31,9 @@ namespace LibraryWebApplication.Infrastructure.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<T>> GetAllAsync()
+        public async Task<IEnumerable<T>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await _dbSet.ToListAsync();
         }
 
         public Task<T> GetByIdAsync(int id)

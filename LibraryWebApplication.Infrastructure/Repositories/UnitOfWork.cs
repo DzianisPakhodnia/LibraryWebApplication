@@ -15,9 +15,9 @@ namespace LibraryWebApplication.Infrastructure.Repositories
         public UnitOfWork(ApplicationDbContext context)
         {
             _context = context;
-            Users = new UserRepository();
-            Authors = new AuthorRepository();
-            Books = new BookRepository();
+            Users = new UserRepository(_context);
+            Authors = new AuthorRepository(_context);
+            Books = new BookRepository(_context);
         }
         public IUserRepository Users { get; set; }
 

@@ -11,8 +11,11 @@ namespace LibraryWebApplication.Infrastructure.Repositories
 {
     public class AuthorRepository : Repository<Author>, IAuthorRepository
     {
-
         private readonly ApplicationDbContext _context;
+        public AuthorRepository(ApplicationDbContext context) : base(context)
+        {
+            _context = context;
+        }
 
         public Task<IEnumerable<Author>> GetAuthorsByBookTitleAsync(string bookTitle)
         {
