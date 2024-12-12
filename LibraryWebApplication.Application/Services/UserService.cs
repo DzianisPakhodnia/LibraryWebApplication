@@ -57,9 +57,18 @@ namespace LibraryWebApplication.Application.Services
             await _unitOfWork.Users.CreateAsync(user);
         }
 
-        public Task UpdateUserAsync(UserUpdateDTO userUpdateDTO, IFormFile photo)
+        public async Task UpdateUserAsync(UserUpdateDTO userUpdateDTO, IFormFile photo)
         {
-            throw new NotImplementedException();
+            User user = await _unitOfWork.Users.GetByIdAsync(userUpdateDTO.Id);
+            var ans = await _mapper.Update(userUpdateDTO, user);
+            string id = user.Id.ToString();
+            if (photo != null)
+            {
+                //string path = await _photoService.SaveUserProfilePhotoAsync(photo, id);
+                //ans.pathToPic = path;
+            }
+            await _unitOfWork.Users.UpdateAsync(ans);
+            await _unitOfWork.SaveChangesAsync();
         }
 
 

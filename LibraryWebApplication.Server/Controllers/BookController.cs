@@ -1,6 +1,7 @@
 ﻿using LibraryWebApplication.Application.Services;
 using LibraryWebApplication.Core.Interfaces.Services;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryWebApplication.Server.Controllers
@@ -10,36 +11,35 @@ namespace LibraryWebApplication.Server.Controllers
     public class BookController : ControllerBase
     {
         private readonly IBookService _bookService;
-        public BookController(BookService bookService) 
-        { 
+        public BookController(IBookService bookService)
+        {
             _bookService = bookService;
         }
 
-
-
         // Получение списка всех книг
-        [HttpGet]
+        [HttpGet("getAll")]
         public async Task<IActionResult> GetAllBooks()
         {
-            throw new NotImplementedException();
+            var books = await _bookService.GetAllBooksAsync();
+            return Ok(books);
         }
 
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetBookById(int id)
         {
-            //var book = await _bookService.GetBookById(id);
-            throw new NotImplementedException();
+            var book = await _bookService.GetBookByIdAsync(id);
+            return Ok(book);
         }
 
 
         // Получение книги по её ISBN
         [HttpGet("isbn/{isbn}")]
-        public async Task<IActionResult> GetBookByISBN()
+        public async Task<IActionResult> GetBookByISBNAsync(int ISBN)
         {
-            throw new NotImplementedException();
+            var book = await _bookService.GetBookByISBNAsync(ISBN);
+            return Ok(book);
         }
-
 
 
         // Добавление новой книги

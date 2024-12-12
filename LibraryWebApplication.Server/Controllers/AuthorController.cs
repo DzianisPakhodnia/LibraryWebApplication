@@ -1,4 +1,7 @@
-﻿using LibraryWebApplication.Application.Interfaces;
+﻿using LibraryWebApplication.Application.DTO.Author;
+using LibraryWebApplication.Application.Interfaces;
+using LibraryWebApplication.Application.Services;
+using LibraryWebApplication.Core.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryWebApplication.Server.Controllers
@@ -19,7 +22,8 @@ namespace LibraryWebApplication.Server.Controllers
         [HttpGet("getAll")]
         public async Task<IActionResult> GetAllAuthors()
         {
-            throw new NotImplementedException();
+            var authors = await _authorService.GetAllAuthorsAsync();
+            return Ok(authors);
         }
 
 
@@ -28,15 +32,17 @@ namespace LibraryWebApplication.Server.Controllers
 
         public async Task<IActionResult> GetAuthorById(int id)
         {
-            throw new NotImplementedException();
+            var book = await _authorService.GetAuthorByIdAsync(id);
+            return Ok(book);
         }
 
 
         // Добавление нового автора
         [HttpPost]
-        public async Task<IActionResult> AddAuthor()
+        public async Task<IActionResult> AddAuthor(AuthorCreateDTO AuthorCreateDTO)
         {
-            throw new NotImplementedException();
+            await _authorService.AddAuthorAsync(AuthorCreateDTO);
+            return Ok();
         }
 
         // Изменение информации о существующем авторе
@@ -48,9 +54,10 @@ namespace LibraryWebApplication.Server.Controllers
 
         // Удаление автора
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteAuthor()
+        public async Task<IActionResult> DeleteAuthor(int id)
         {
-            throw new NotImplementedException();
+            await _authorService.DeleteAuthorAsync(id);
+            return NoContent();
         }
 
         // Получение всех книг по автору

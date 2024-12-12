@@ -30,6 +30,8 @@ builder.Services.AddScoped<IBookService, BookService>();
 
 builder.Services.AddScoped<IMapperClass, Mapper>();
 builder.Services.AddAutoMapper(typeof(UserMappingProfile));
+builder.Services.AddAutoMapper(typeof(AuthorMappingProfile));
+builder.Services.AddAutoMapper(typeof(BookMappingProfile));
 
 var app = builder.Build();
 
