@@ -17,6 +17,5 @@ namespace LibraryWebApplication.Application.DTO.Book
         public DateTime? ReturnTime { get; set; }
         public string ProfilePicturePath { get; set; }
 
-        
     }
 }

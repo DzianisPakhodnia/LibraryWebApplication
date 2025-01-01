@@ -21,10 +21,10 @@ namespace LibraryWebApplication.Application.Services
         }
         public async Task AddBookAsync(BookCreateDTO newBook)
         {
-            var bookEntity = await _mapper.Map<BookCreateDTO, Book>(newBook);
-            await _unitOfWork.Books.
-                AddBookAsync(bookEntity);
-            await _unitOfWork.SaveChangesAsync();
+            //var bookEntity = await _mapper.Map<BookCreateDTO, Book>(newBook);
+            //await _unitOfWork.Books.AddBookAsync(bookEntity);
+            //await _unitOfWork.SaveChangesAsync();
+            throw new NotImplementedException();
         }
 
         public Task AddImageAsync(int bookId, IFormFile image)

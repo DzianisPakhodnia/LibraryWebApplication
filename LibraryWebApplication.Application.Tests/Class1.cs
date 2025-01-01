@@ -1,13 +1,10 @@
-namespace LibraryWebApplication.Application.Tests
+﻿namespace LibraryWebApplication.Application.Tests
 {
-    public class erre
+    public class Class1
     {
         [Fact]
         public void Test1()
         {
-
-
-
 
         }
     }

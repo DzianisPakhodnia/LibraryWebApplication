@@ -38,26 +38,35 @@ namespace LibraryWebApplication.Application.Services
         public async Task<IEnumerable<AuthorDTO>> GetAllAuthorsAsync()
         {
             var authors = await _unitOfWork.Authors.GetAllAsync();
-            return await _mapper.Map<IEnumerable<Author>, IEnumerable<AuthorDTO>>(authors);
+
+            if (authors == null || !authors.Any())
+            {
+                return Enumerable.Empty<AuthorDTO>();
+            }
+
+            return _mapper.Map<IEnumerable<AuthorDTO>>(authors);
         }
+
 
         public async Task GetAuthorByIdAsync(int id)
         {
             var author = await _unitOfWork.Authors.GetByIdAsync(id);
             return await _mapper.Map(Author, AuthorDTO)(author);
-            throw new NotImplementedException();
-        }
 
-        public Task<IEnumerable<BookDTO>> GetBooksByAuthorIdAsync(int authorId)
+        }
+        public async Task<IEnumerable<BookDTO>> GetBooksByAuthorIdAsync(int authorId)
         {
-            throw new NotImplementedException();
+
+            var ans = await _unitOfWork.Authors.GetByIdAsync(authorId);
+            return await _mapper.Map(Author, AuthorDTO)(ans);
         }
 
-        public Task UpdateAuthorAsync(int id, AuthorDTO author)
+        public async Task UpdateAuthorAsync(AuthorUpdateDTO authorUpdateDTO)
         {
-            throw new NotImplementedException();
+            var ans = await _mapper.Map<AuthorUpdateDTO, Author>(authorUpdateDTO);
+            await _unitOfWork.Authors.UpdateAsync(ans);
         }
 
-        
+       
     }
 }

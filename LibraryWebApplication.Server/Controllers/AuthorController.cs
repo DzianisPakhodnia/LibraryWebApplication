@@ -14,7 +14,6 @@ namespace LibraryWebApplication.Server.Controllers
         public AuthorController(IAuthorService authorService)
         {
             _authorService = authorService;
-
         }
 
 
@@ -32,8 +31,9 @@ namespace LibraryWebApplication.Server.Controllers
 
         public async Task<IActionResult> GetAuthorById(int id)
         {
-            var book = await _authorService.GetAuthorByIdAsync(id);
-            return Ok(book);
+            //var author = await _authorService.GetAuthorByIdAsync(id);
+            //return Ok(author);
+            
         }
 
 
@@ -41,15 +41,27 @@ namespace LibraryWebApplication.Server.Controllers
         [HttpPost]
         public async Task<IActionResult> AddAuthor(AuthorCreateDTO AuthorCreateDTO)
         {
-            await _authorService.AddAuthorAsync(AuthorCreateDTO);
-            return Ok();
+            //await _authorService.AddAuthorAsync(AuthorCreateDTO);
+            //return Ok();
         }
 
         // Изменение информации о существующем авторе
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateAuthor()
+        public async Task<IActionResult> UpdateAuthor(int id, AuthorUpdateDTO authorUpdateDTO)
         {
-            throw new NotImplementedException();
+            //if (id != authorUpdateDTO.Id)
+            //{
+            //    return BadRequest("ID in the path and body do not match.");
+            //}
+
+            //var updatedAuthor = await _authorService.UpdateAuthorAsync(authorUpdateDTO);
+
+            //if (updatedAuthor == null)
+            //{
+            //    return NotFound($"Author with ID {id} not found.");
+            //}
+
+            //return Ok(updatedAuthor);
         }
 
         // Удаление автора
@@ -64,7 +76,14 @@ namespace LibraryWebApplication.Server.Controllers
         [HttpGet("{id}/books")]
         public async Task<IActionResult> GetBooksByAuthor(int id)
         {
-            throw new NotImplementedException();
+            //var books = await _authorService.GetBooksByAuthorAsync(id);
+
+            //if (books == null || !books.Any())
+            //{
+            //    return NotFound($"No books found for author with ID {id}.");
+            //}
+
+            //return Ok(books);
         }
 
 
