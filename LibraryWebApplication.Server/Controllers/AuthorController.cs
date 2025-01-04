@@ -31,9 +31,10 @@ namespace LibraryWebApplication.Server.Controllers
 
         public async Task<IActionResult> GetAuthorById(int id)
         {
-            //var author = await _authorService.GetAuthorByIdAsync(id);
-            //return Ok(author);
-            
+            var author = await _authorService.GetAuthorByIdAsync(id);
+
+            return Ok(author);
+
         }
 
 
@@ -41,8 +42,8 @@ namespace LibraryWebApplication.Server.Controllers
         [HttpPost]
         public async Task<IActionResult> AddAuthor(AuthorCreateDTO AuthorCreateDTO)
         {
-            //await _authorService.AddAuthorAsync(AuthorCreateDTO);
-            //return Ok();
+            await _authorService.AddAuthorAsync(AuthorCreateDTO);
+            return Ok();
         }
 
         // Изменение информации о существующем авторе

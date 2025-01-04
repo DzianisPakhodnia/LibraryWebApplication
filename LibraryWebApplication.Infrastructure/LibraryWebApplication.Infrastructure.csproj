@@ -7,7 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="BaseRepository\**" />
+    <EmbeddedResource Remove="BaseRepository\**" />
+    <None Remove="BaseRepository\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
     <PackageReference Include="Microsoft.AspNet.Identity.Core" Version="2.2.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.0">
@@ -24,10 +31,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\LibraryWebApplication.Application\LibraryWebApplication.Application.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="BaseRepository\" />
   </ItemGroup>
 
 </Project>

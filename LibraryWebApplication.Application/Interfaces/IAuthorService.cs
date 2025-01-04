@@ -11,7 +11,7 @@ namespace LibraryWebApplication.Application.Interfaces
         Task GetAuthorByIdAsync(int id);
 
         Task AddAuthorAsync(AuthorDTO author);
-        Task UpdateAuthorAsync(AuthorDTO author);
+        Task UpdateAuthorAsync(AuthorUpdateDTO author);
         Task DeleteAuthorAsync(int id);
 
         Task<IEnumerable<BookDTO>> GetBooksByAuthorIdAsync(int authorId);
