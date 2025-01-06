@@ -21,10 +21,11 @@ namespace LibraryWebApplication.Application.Services
         }
         public async Task AddAuthorAsync(AuthorDTO authorDTO)
         {
-            //var author = await _mapper.Map<Author, AuthorCreateDTO>(authorDTO);
+            //var author = _mapper.Map<Author>(authorDTO); 
             //await _unitOfWork.Authors.CreateAsync(author);
-            //throw new NotImplementedException();
+            throw new NotImplementedException();
         }
+
 
         public async Task DeleteAuthorAsync(int id)
         {
@@ -45,9 +46,6 @@ namespace LibraryWebApplication.Application.Services
             return await _mapper.Map<IEnumerable<Author>, IEnumerable<AuthorDTO>>(authors);
         }
 
-
-
-
         public async Task<AuthorDTO> GetAuthorByIdAsync(int id)
         {
             var author = await _unitOfWork.Authors.GetByIdAsync(id);
@@ -60,24 +58,11 @@ namespace LibraryWebApplication.Application.Services
             return await _mapper.Map<Author, AuthorDTO>(author);
         }
 
-
-
-        public async Task<IEnumerable<BookDTO>> GetBooksByAuthorIdAsync(int authorId)
+        public async Task<IEnumerable<Book>> GetBooksByAuthorAsync(string author)
         {
 
-            //var author = await _unitOfWork.Authors.GetByIdAsync(authorId);
-
-
-            //if (author == null)
-            //{
-            //    return Enumerable.Empty<BookDTO>();
-            //}
-
-
-            //return _mapper.Map<IEnumerable<BookDTO>>(author.Books);
-            throw new NotImplementedException();
+            return await _unitOfWork.Books.GetBooksByAuthorAsync(author);
         }
-
 
         public async Task UpdateAuthorAsync(AuthorUpdateDTO authorUpdateDTO)
         {
@@ -85,9 +70,5 @@ namespace LibraryWebApplication.Application.Services
             await _unitOfWork.Authors.UpdateAsync(ans);
         }
 
-        Task IAuthorService.GetAuthorByIdAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

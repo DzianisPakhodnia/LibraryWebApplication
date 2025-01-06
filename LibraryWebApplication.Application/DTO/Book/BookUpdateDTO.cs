@@ -9,7 +9,7 @@ namespace LibraryWebApplication.Application.DTO.Book
     public class BookUpdateDTO
     {
         public int Id { get; set; }
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
     }
 }

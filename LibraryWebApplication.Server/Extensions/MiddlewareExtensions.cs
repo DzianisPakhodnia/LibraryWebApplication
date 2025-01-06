@@ -13,6 +13,7 @@
 
         app.UseHttpsRedirection();
         app.UseAuthorization();
+        app.UseAuthentication();
         app.MapControllers();
         app.MapFallbackToFile("/index.html");
     }

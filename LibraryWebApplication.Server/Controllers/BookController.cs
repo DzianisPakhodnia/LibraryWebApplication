@@ -1,4 +1,5 @@
-﻿using LibraryWebApplication.Application.Services;
+﻿using LibraryWebApplication.Application.Interfaces;
+using LibraryWebApplication.Application.Services;
 using LibraryWebApplication.Core.Interfaces.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
@@ -44,7 +45,7 @@ namespace LibraryWebApplication.Server.Controllers
 
         // Добавление новой книги
         [HttpPost]
-        public async Task<IActionResult> AddBook()
+        public async Task<IActionResult> AddBookAsync()
         {
             throw new NotImplementedException();
         }
@@ -52,7 +53,7 @@ namespace LibraryWebApplication.Server.Controllers
 
         // Изменение информации о существующей книге
         [HttpPut("{id}")]
-        public async Task<IActionResult> ChangeInformationBook()
+        public async Task<IActionResult> ChangeInformationBookAsync()
         {
             throw new NotImplementedException();
         }
@@ -60,9 +61,10 @@ namespace LibraryWebApplication.Server.Controllers
 
         //Удаление книги
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteBook()
+        public async Task<IActionResult> DeleteBookAsync(int id)
         {
-            throw new NotImplementedException();
+            await _bookService.DeleteBookAsync(id);
+            return NoContent();
         }
 
 

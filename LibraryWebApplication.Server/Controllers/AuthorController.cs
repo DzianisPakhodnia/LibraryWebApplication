@@ -31,9 +31,10 @@ namespace LibraryWebApplication.Server.Controllers
 
         public async Task<IActionResult> GetAuthorById(int id)
         {
-            var author = await _authorService.GetAuthorByIdAsync(id);
+            //var author = await _authorService.GetAuthorByIdAsync(id);
 
-            return Ok(author);
+            //return Ok(author);
+            throw new NotImplementedException();
 
         }
 
@@ -42,27 +43,17 @@ namespace LibraryWebApplication.Server.Controllers
         [HttpPost]
         public async Task<IActionResult> AddAuthor(AuthorCreateDTO AuthorCreateDTO)
         {
-            await _authorService.AddAuthorAsync(AuthorCreateDTO);
-            return Ok();
+            //await _authorService.AddAuthorAsync(AuthorCreateDTO);
+            //return Ok();
+            throw new NotImplementedException();
         }
 
         // Изменение информации о существующем авторе
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateAuthor(int id, AuthorUpdateDTO authorUpdateDTO)
         {
-            //if (id != authorUpdateDTO.Id)
-            //{
-            //    return BadRequest("ID in the path and body do not match.");
-            //}
-
-            //var updatedAuthor = await _authorService.UpdateAuthorAsync(authorUpdateDTO);
-
-            //if (updatedAuthor == null)
-            //{
-            //    return NotFound($"Author with ID {id} not found.");
-            //}
-
-            //return Ok(updatedAuthor);
+            await _authorService.UpdateAuthorAsync(id);
+            throw new NotImplementedException();
         }
 
         // Удаление автора
@@ -85,14 +76,7 @@ namespace LibraryWebApplication.Server.Controllers
             //}
 
             //return Ok(books);
+            throw new NotImplementedException();
         }
-
-
-
-
-
-
-
-
     }
 }

@@ -15,7 +15,6 @@ namespace LibraryWebApplication.Application.DTO.Book
         public string Description { get; set; }
         public DateTime? BorrowedTime { get; set; }
         public DateTime? ReturnTime { get; set; }
-        public string ProfilePicturePath { get; set; }
 
     }
 }

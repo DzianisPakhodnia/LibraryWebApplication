@@ -13,7 +13,5 @@ namespace LibraryWebApplication.Application.DTO.Author
         public string Country { get; set; }
         public DateTime DateOfBirth { get; set; }
         
-
-
     }
 }

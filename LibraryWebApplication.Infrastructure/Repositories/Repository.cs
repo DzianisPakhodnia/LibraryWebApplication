@@ -35,7 +35,6 @@ namespace LibraryWebApplication.Infrastructure.Repositories
                 _dbSet.Remove(entity);
                 await _context.SaveChangesAsync();
             }
-         
         }
 
         public async Task<IEnumerable<T>> GetAllAsync()

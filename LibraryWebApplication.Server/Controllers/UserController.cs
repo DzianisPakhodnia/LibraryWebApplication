@@ -52,14 +52,14 @@ namespace LibraryWebApplication.Server.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdateUser([FromForm] UserUpdateDTO userUpdate, IFormFile photo = null)
+        public async Task<IActionResult> UpdateUserAsync([FromForm] UserUpdateDTO userUpdate, IFormFile photo = null)
         {
             await _userService.UpdateUserAsync(userUpdate, photo);
             return Ok();
         }
 
         [HttpDelete]
-        public async Task<IActionResult> DeleteUser(int id)
+        public async Task<IActionResult> DeleteUserAsync(int id)
         {
             await _userService.DeleteUserAsync(id);
             return NoContent();
