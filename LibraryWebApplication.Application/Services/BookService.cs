@@ -16,14 +16,10 @@ namespace LibraryWebApplication.Application.Services
         { 
             _unitOfWork = unitOfWork;
             _mapper = mapper;
-        
-        
         }
-        public async Task AddBookAsync(BookCreateDTO newBook)
+        public async Task AddBookAsync(Book book)
         {
-            //var bookEntity = await _mapper.Map<BookCreateDTO, Book>(newBook);
-            //await _unitOfWork.Books.AddBookAsync(bookEntity);
-            //await _unitOfWork.SaveChangesAsync();
+            await _unitOfWork.Books.CreateAsync(book);
             throw new NotImplementedException();
         }
 

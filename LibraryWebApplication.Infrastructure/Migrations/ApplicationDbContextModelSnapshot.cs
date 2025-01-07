@@ -50,7 +50,7 @@ namespace LibraryWebApplication.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Authors");
+                    b.ToTable("Authors", (string)null);
                 });
 
             modelBuilder.Entity("LibraryWebApplication.Core.Entities.Book", b =>
@@ -94,7 +94,7 @@ namespace LibraryWebApplication.Infrastructure.Migrations
 
                     b.HasIndex("AuthorId");
 
-                    b.ToTable("Books");
+                    b.ToTable("Books", (string)null);
                 });
 
             modelBuilder.Entity("LibraryWebApplication.Core.Entities.User", b =>
@@ -133,7 +133,7 @@ namespace LibraryWebApplication.Infrastructure.Migrations
                     b.HasIndex("Username")
                         .IsUnique();
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("LibraryWebApplication.Core.Entities.Book", b =>

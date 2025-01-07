@@ -6,14 +6,11 @@ using LibraryWebApplication.Infrastructure.Data;
 using LibraryWebApplication.Infrastructure.Mapper;
 using LibraryWebApplication.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 
 public static class ServiceExtensions
 {
     public static void ConfigureServices(this IServiceCollection services, IConfiguration configuration)
     {
-
         services.AddControllers();
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
@@ -35,6 +32,5 @@ public static class ServiceExtensions
             typeof(AuthorMappingProfile),
             typeof(BookMappingProfile)
         );
-
     }
 }

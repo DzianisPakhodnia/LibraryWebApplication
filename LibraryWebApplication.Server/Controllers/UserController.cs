@@ -52,9 +52,9 @@ namespace LibraryWebApplication.Server.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdateUserAsync([FromForm] UserUpdateDTO userUpdate, IFormFile photo = null)
+        public async Task<IActionResult> UpdateUserAsync([FromForm] UserUpdateDTO userUpdate)
         {
-            await _userService.UpdateUserAsync(userUpdate, photo);
+            await _userService.UpdateUserAsync(userUpdate);
             return Ok();
         }
 

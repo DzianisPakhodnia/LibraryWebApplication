@@ -24,7 +24,7 @@ namespace LibraryWebApplication.Core.Interfaces.Services
         Task<IEnumerable<BookDTO>> SearchBooksAsync(string isbn);
 
         
-        Task AddBookAsync(BookCreateDTO newBook);
+        Task AddBookAsync(Book book);
 
         
         Task UpdateBookAsync(BookUpdateDTO updatedBook);

@@ -19,11 +19,9 @@ namespace LibraryWebApplication.Application.Services
             _mapper = mapper;
         
         }
-        public async Task AddAuthorAsync(AuthorDTO authorDTO)
+        public async Task AddAuthorAsync(Author author)
         {
-            //var author = _mapper.Map<Author>(authorDTO); 
-            //await _unitOfWork.Authors.CreateAsync(author);
-            throw new NotImplementedException();
+            await _unitOfWork.Authors.CreateAsync(author);
         }
 
 
@@ -64,10 +62,12 @@ namespace LibraryWebApplication.Application.Services
             return await _unitOfWork.Books.GetBooksByAuthorAsync(author);
         }
 
-        public async Task UpdateAuthorAsync(AuthorUpdateDTO authorUpdateDTO)
+        public async Task UpdateAuthorAsync(Author author)
         {
-            var ans = await _mapper.Map<AuthorUpdateDTO, Author>(authorUpdateDTO);
-            await _unitOfWork.Authors.UpdateAsync(ans);
+            await _unitOfWork.Authors.UpdateAsync(author);
+
+            //var ans = await _mapper.Map<AuthorUpdateDTO, Author>(authorUpdateDTO);
+            //await _unitOfWork.Authors.UpdateAsync(ans);
         }
 
     }

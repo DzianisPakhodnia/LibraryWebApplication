@@ -1,6 +1,7 @@
 ﻿using LibraryWebApplication.Application.DTO.Author;
 using LibraryWebApplication.Application.Interfaces;
 using LibraryWebApplication.Application.Services;
+using LibraryWebApplication.Core.Entities;
 using LibraryWebApplication.Core.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,7 +17,6 @@ namespace LibraryWebApplication.Server.Controllers
             _authorService = authorService;
         }
 
-
         // Получение списка всех авторов
         [HttpGet("getAll")]
         public async Task<IActionResult> GetAllAuthors()
@@ -25,35 +25,31 @@ namespace LibraryWebApplication.Server.Controllers
             return Ok(authors);
         }
 
-
         // Получение автора по его Id
         [HttpGet("{id}")]
 
         public async Task<IActionResult> GetAuthorById(int id)
         {
-            //var author = await _authorService.GetAuthorByIdAsync(id);
+            var author = await _authorService.GetAuthorByIdAsync(id);
 
-            //return Ok(author);
-            throw new NotImplementedException();
+            return Ok(author);
 
         }
 
-
         // Добавление нового автора
         [HttpPost]
-        public async Task<IActionResult> AddAuthor(AuthorCreateDTO AuthorCreateDTO)
+        public async Task<IActionResult> AddAuthorAsync(Author author)
         {
-            //await _authorService.AddAuthorAsync(AuthorCreateDTO);
-            //return Ok();
-            throw new NotImplementedException();
+            await _authorService.AddAuthorAsync(author);
+            return Ok(author);
         }
 
         // Изменение информации о существующем авторе
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateAuthor(int id, AuthorUpdateDTO authorUpdateDTO)
+        public async Task<IActionResult> UpdateAuthor(Author author)
         {
-            await _authorService.UpdateAuthorAsync(id);
-            throw new NotImplementedException();
+            await _authorService.UpdateAuthorAsync(author);
+            return Ok(author);
         }
 
         // Удаление автора
@@ -65,18 +61,17 @@ namespace LibraryWebApplication.Server.Controllers
         }
 
         // Получение всех книг по автору
-        [HttpGet("{id}/books")]
-        public async Task<IActionResult> GetBooksByAuthor(int id)
+        [HttpGet("books")]
+        public async Task<IActionResult> GetBooksByAuthor(string author)
         {
-            //var books = await _authorService.GetBooksByAuthorAsync(id);
+            var books = await _authorService.GetBooksByAuthorAsync(author);
 
-            //if (books == null || !books.Any())
-            //{
-            //    return NotFound($"No books found for author with ID {id}.");
-            //}
+            if (books == null || !books.Any())
+            {
+                return NotFound($"No books found for author with name {author}.");
+            }
+            return Ok(books);
 
-            //return Ok(books);
-            throw new NotImplementedException();
         }
     }
 }

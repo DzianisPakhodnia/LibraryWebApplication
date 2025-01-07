@@ -40,15 +40,9 @@ namespace LibraryWebApplication.Application.Services
             return await _mapper.Map<User, UserDTO>(user);
         }
 
-        public async Task<UserDTO> GetUserByIdAsync(int id)
+        public async Task<User> GetUserByIdAsync(int id)
         {
-            var user = await _unitOfWork.Users.GetByIdAsync(id);
-            if (user == null)
-            {
-                throw new KeyNotFoundException();
-            }
-            return await _mapper.Map<User, UserDTO>(user);
-
+            return await _unitOfWork.Users.GetByIdAsync(id);
         }
 
         public async Task TryAddUserAsync(UserCreateDTO userCreateDTO)
@@ -57,16 +51,11 @@ namespace LibraryWebApplication.Application.Services
             await _unitOfWork.Users.CreateAsync(user);
         }
 
-        public async Task UpdateUserAsync(UserUpdateDTO userUpdateDTO, IFormFile photo)
+        public async Task UpdateUserAsync(UserUpdateDTO userUpdateDTO)
         {
             User user = await _unitOfWork.Users.GetByIdAsync(userUpdateDTO.Id);
             var ans = await _mapper.Update(userUpdateDTO, user);
             string id = user.Id.ToString();
-            if (photo != null)
-            {
-                //string path = await _photoService.SaveUserProfilePhotoAsync(photo, id);
-                //ans.pathToPic = path;
-            }
             await _unitOfWork.Users.UpdateAsync(ans);
             await _unitOfWork.SaveChangesAsync();
         }
