@@ -1,4 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using LibraryWebApplication.Application.Interfaces;
+using LibraryWebApplication.Application.Services;
+using LibraryWebApplication.Core.Interfaces.Services;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryWebApplication.Server.Controllers
@@ -7,35 +11,41 @@ namespace LibraryWebApplication.Server.Controllers
     [ApiController]
     public class BookController : ControllerBase
     {
+        private readonly IBookService _bookService;
+        public BookController(IBookService bookService)
+        {
+            _bookService = bookService;
+        }
 
         // Получение списка всех книг
-        [HttpGet]
+        [HttpGet("getAll")]
         public async Task<IActionResult> GetAllBooks()
         {
-            throw new NotImplementedException();
+            var books = await _bookService.GetAllBooksAsync();
+            return Ok(books);
         }
 
 
-        // Получение определённой книги по её Id
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetBookById()
+        public async Task<IActionResult> GetBookById(int id)
         {
-            throw new NotImplementedException();
+            var book = await _bookService.GetBookByIdAsync(id);
+            return Ok(book);
         }
 
 
         // Получение книги по её ISBN
         [HttpGet("isbn/{isbn}")]
-        public async Task<IActionResult> GetBookByISBN()
+        public async Task<IActionResult> GetBookByISBNAsync(int ISBN)
         {
-            throw new NotImplementedException();
+            var book = await _bookService.GetBookByISBNAsync(ISBN);
+            return Ok(book);
         }
-
 
 
         // Добавление новой книги
         [HttpPost]
-        public async Task<IActionResult> AddBook()
+        public async Task<IActionResult> AddBookAsync()
         {
             throw new NotImplementedException();
         }
@@ -43,7 +53,7 @@ namespace LibraryWebApplication.Server.Controllers
 
         // Изменение информации о существующей книге
         [HttpPut("{id}")]
-        public async Task<IActionResult> ChangeInformationBook()
+        public async Task<IActionResult> ChangeInformationBookAsync()
         {
             throw new NotImplementedException();
         }
@@ -51,9 +61,10 @@ namespace LibraryWebApplication.Server.Controllers
 
         //Удаление книги
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteBook()
+        public async Task<IActionResult> DeleteBookAsync(int id)
         {
-            throw new NotImplementedException();
+            await _bookService.DeleteBookAsync(id);
+            return NoContent();
         }
 
 

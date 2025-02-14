@@ -3,6 +3,7 @@ using System;
 using LibraryWebApplication.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace LibraryWebApplication.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241209230842_InitialMigration")]
+    partial class InitialMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,7 +53,7 @@ namespace LibraryWebApplication.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Authors", (string)null);
+                    b.ToTable("Authors");
                 });
 
             modelBuilder.Entity("LibraryWebApplication.Core.Entities.Book", b =>
@@ -94,7 +97,7 @@ namespace LibraryWebApplication.Infrastructure.Migrations
 
                     b.HasIndex("AuthorId");
 
-                    b.ToTable("Books", (string)null);
+                    b.ToTable("Books");
                 });
 
             modelBuilder.Entity("LibraryWebApplication.Core.Entities.User", b =>
@@ -133,7 +136,7 @@ namespace LibraryWebApplication.Infrastructure.Migrations
                     b.HasIndex("Username")
                         .IsUnique();
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("LibraryWebApplication.Core.Entities.Book", b =>

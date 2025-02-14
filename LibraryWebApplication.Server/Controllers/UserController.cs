@@ -1,4 +1,6 @@
 ﻿
+using LibraryWebApplication.Application.DTO.User;
+using LibraryWebApplication.Core.Interfaces.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -10,44 +12,57 @@ namespace LibraryWebApplication.Server.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
+        private readonly IUserService _userService;
+
+        public UserController(IUserService userService)
+        {
+            _userService = userService;
+        }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetUserByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var user = await _userService.GetUserByIdAsync(id);
+            return Ok(user);
         }
 
 
         [HttpGet("getByEmail/{email}")]
         public async Task<IActionResult> GetUserByEmailAsync(string email)
         {
-            throw new NotImplementedException();
+            var user = await _userService.GetUserByEmailAsync(email);
+            return Ok(user);
         }
 
 
-        [Authorize]
+        //[Authorize]
         [HttpGet("getAll")]
         public async Task<IActionResult> GetAllUsersAsync()
         {
-            throw new NotImplementedException();
+            var users = await _userService.GetAllUsersAsync();
+            return Ok(users);
         }
 
         [HttpPost]
-        public async Task<IActionResult> TryAddUserAsync()
+        public async Task<IActionResult> TryAddUserAsync(UserCreateDTO userCreateDTO)
         {
-            throw new NotImplementedException();
+
+            await _userService.TryAddUserAsync(userCreateDTO);
+            return Ok();
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdateUser()
+        public async Task<IActionResult> UpdateUserAsync([FromForm] UserUpdateDTO userUpdate)
         {
-            throw new NotImplementedException();
+            await _userService.UpdateUserAsync(userUpdate);
+            return Ok();
         }
 
         [HttpDelete]
-        public async Task<IActionResult> DeleteUser(int id)
+        public async Task<IActionResult> DeleteUserAsync(int id)
         {
-            throw new NotImplementedException();
+            await _userService.DeleteUserAsync(id);
+            return NoContent();
         }
 
 

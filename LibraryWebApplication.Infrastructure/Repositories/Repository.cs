@@ -1,4 +1,4 @@
-﻿using LibraryWebApplication.Core.Interfaces.Repositories;
+﻿using LibraryWebApplication.Core.Repositories;
 using LibraryWebApplication.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -15,30 +15,43 @@ namespace LibraryWebApplication.Infrastructure.Repositories
         private readonly DbContext _context;
         private readonly DbSet<T> _dbSet;
 
-
-        public Task CreateAsync(T entity)
+        public Repository(DbContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
+            _dbSet = _context.Set<T>();
         }
 
-        public Task DeleteAsync(int id)
+        public async Task CreateAsync(T entity)
         {
-            throw new NotImplementedException();
+            await _dbSet.AddAsync(entity);
+            await _context.SaveChangesAsync();
         }
 
-        public Task<IEnumerable<T>> GetAllAsync()
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var entity = await _dbSet.FindAsync(id);
+            if (entity != null) 
+            {
+                _dbSet.Remove(entity);
+                await _context.SaveChangesAsync();
+            }
         }
 
-        public Task<T> GetByIdAsync(int id)
+        public async Task<IEnumerable<T>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await _dbSet.ToListAsync();
         }
 
-        public Task UpdateAsync(T entity)
+        public async Task<T> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _dbSet.FindAsync(id);
+        }
+
+        public async Task UpdateAsync(T entity)
+        {
+            _dbSet.Attach(entity);
+            _context.Entry(entity).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
         }
     }
 }

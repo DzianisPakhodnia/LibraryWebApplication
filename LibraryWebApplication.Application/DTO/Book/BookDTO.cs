@@ -1,25 +1,20 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LibraryWebApplication.Core.Entities
+namespace LibraryWebApplication.Application.DTO.Book
 {
-    public class Book
+    public class BookDTO
     {
         public int Id { get; set; }
         public string ISBN { get; set; }
         public string Title { get; set; }
         public string Genre { get; set; }
         public string Description { get; set; }
-
         public DateTime? BorrowedTime { get; set; }
         public DateTime? ReturnTime { get; set; }
-
-        public int AuthorId { get; set; }  
-        public Author Author { get; set; }
-
 
     }
 }

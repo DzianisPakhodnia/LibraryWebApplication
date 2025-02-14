@@ -1,26 +1,26 @@
 ﻿using LibraryWebApplication.Core.Entities;
-using LibraryWebApplication.Core.Interfaces.Repositories;
+using LibraryWebApplication.Core.Repositories;
 using LibraryWebApplication.Infrastructure.Data;
-using System;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace LibraryWebApplication.Infrastructure.Repositories
 {
     public class AuthorRepository : Repository<Author>, IAuthorRepository
     {
-
         private readonly ApplicationDbContext _context;
 
-        public Task<IEnumerable<Author>> GetAuthorsByBookTitleAsync(string bookTitle)
+        public AuthorRepository(ApplicationDbContext context) : base(context)
         {
-            throw new NotImplementedException();
+            _context = context;
         }
-
-
-
-
+        public async Task<IEnumerable<Author>> GetAuthorsByBookTitleAsync(string bookTitle)
+        {
+            return await _context.Authors
+                                 .Where(a => a.Books.Any(b => b.Title.Contains(bookTitle)))
+                                 .ToListAsync();
+        }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using LibraryWebApplication.Core.Entities;
-using LibraryWebApplication.Core.Interfaces.Repositories;
+using LibraryWebApplication.Core.Repositories;
+using LibraryWebApplication.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,14 +12,19 @@ namespace LibraryWebApplication.Infrastructure.Repositories
 {
     public class UserRepository : Repository<User>, IUserRepository
     {
-        public Task<User> GetUserByEmailAsync(string email)
+        private readonly ApplicationDbContext _context;
+        public UserRepository(ApplicationDbContext context) : base(context)
         {
-            throw new NotImplementedException();
+            _context = context;
+        }
+        public async Task<User> GetUserByEmailAsync(string email)
+        {
+            return await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
         }
 
-        public Task<IEnumerable<User>> GetUsersByUsernNameAsync(string username)
+        public async Task<IEnumerable<User>> GetUsersByUsernNameAsync(string username)
         {
-            throw new NotImplementedException();
+            return await _context.Users.Where(u => u.Username.Contains(username)).ToListAsync();
         }
     }
 }
